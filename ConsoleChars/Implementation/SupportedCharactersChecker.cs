@@ -11,7 +11,7 @@ namespace ConsoleChars.Implementation
     {
         public bool IsSupported(char character)
         {
-            return CheckUsingReflection(character);
+            return IsSupportedUsingReflection(character);
         }
 
         public bool AreAllSupported(string text, out IEnumerable<char> NotSupportedCharacters)
@@ -29,7 +29,7 @@ namespace ConsoleChars.Implementation
             return !NotSupportedCharacters.Any();
         }
 
-        private bool CheckUsingReflection(char character)
+        private bool IsSupportedUsingReflection(char character)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
 

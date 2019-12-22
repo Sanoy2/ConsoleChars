@@ -33,6 +33,8 @@ namespace ConsoleChars.Implementation
                 throw new ArgumentNullException(nameof(text));
             }
 
+            text = text.Trim();
+
             bool areCharactersSupported;
             IEnumerable<char> notSupportedCharacters;
             areCharactersSupported = this.supportedCharactersChecker.AreAllSupported(text, out notSupportedCharacters);
