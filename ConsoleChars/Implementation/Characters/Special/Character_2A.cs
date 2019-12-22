@@ -5,19 +5,19 @@ using System.Text;
 
 namespace ConsoleChars.Implementation.Characters.Special
 {
-    public class Character_20 : Character
+    public class Character_2A : Character
     {
-        // Space
+        // *
         protected override IList<string> ToMediumString()
         {
             List<string> lines = new List<string>();
 
-            lines.Add("  ");
-            lines.Add("  ");
-            lines.Add("  ");
-            lines.Add("  ");
-            lines.Add("  ");
-            lines.Add("  ");
+            lines.Add("#  #  #");
+            lines.Add(" # # # ");
+            lines.Add("#######");
+            lines.Add(" # # # ");
+            lines.Add("#  #  #");
+            lines.Add("       ");
 
             return lines;
         }
