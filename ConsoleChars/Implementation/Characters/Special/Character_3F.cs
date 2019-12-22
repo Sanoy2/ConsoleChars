@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ConsoleChars.Implementation.Characters.Letters
+namespace ConsoleChars.Implementation.Characters.Special
 {
     public class Character_3F : Character
     {

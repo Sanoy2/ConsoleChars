@@ -1,12 +1,10 @@
 ﻿using ConsoleChars.Exceptions;
-using ConsoleChars.Implementation.Characters;
+using ConsoleChars.Implementation.Characters.Special;
 using ConsoleChars.Interfaces;
 using ConsoleChars.Others;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace ConsoleChars.Implementation
 {
@@ -23,11 +21,18 @@ namespace ConsoleChars.Implementation
 
         public Character Create(char character)
         {
-            this.ValidateWithException(character);
-            string hex = this.converter.ConvertToHex(character);
+            try
+            {
+                this.ValidateWithException(character);
+                string hex = this.converter.ConvertToHex(character);
 
-            Type type = this.TakeCharacterUsingReflection(hex);
-            return this.CreateInstance(type);
+                Type type = this.TakeCharacterUsingReflection(hex);
+                return this.CreateInstance(type);
+            }
+            catch(CharacterNotSupportedException)
+            {
+                return new Character_3F();
+            }
         }
 
         private Type TakeCharacterUsingReflection(string hex)

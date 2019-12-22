@@ -15,7 +15,7 @@ namespace ConsoleCharsCheck
     {
         static void Main(string[] args)
         {
-            var sentence = new Sentence("DUPA");
+            var sentence = new Sentence("Dupa");
             Console.WriteLine(sentence);
         }
     }

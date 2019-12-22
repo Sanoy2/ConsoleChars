@@ -22,7 +22,7 @@ namespace ConsoleChars.Implementation
             this.charToHexConverter = new CharToHexConverter();
             this.characterFactory = new CharacterFactory(this.supportedCharactersChecker, this.charToHexConverter);
 
-            this.ValidateWithException(text);
+            //this.ValidateWithException(text);
 
             if(spaceBetweenWordsLength < 1)
             {
