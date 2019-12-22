@@ -41,7 +41,7 @@ namespace ConsoleChars.Implementation
 
             if (isCharacterSupported == false)
             {
-                string errorMessage = Messages.NotSupportedCharacter.Replace("{0}", character.ToString());
+                string errorMessage = MessagesBuilder.NotSupportedCharacter(character);
                 throw new CharacterNotSupportedException(errorMessage);
             }
         }

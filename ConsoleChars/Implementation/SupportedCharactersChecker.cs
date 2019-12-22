@@ -14,6 +14,21 @@ namespace ConsoleChars.Implementation
             return CheckUsingReflection(character);
         }
 
+        public bool AreAllSupported(string text, out IEnumerable<char> NotSupportedCharacters)
+        {
+            IList<char> notSupportedChars = new List<char>();
+            foreach (var character in text)
+            {
+                if (this.IsSupported(character) == false)
+                {
+                    notSupportedChars.Add(character);
+                }
+            }
+
+            NotSupportedCharacters = notSupportedChars.AsEnumerable<char>();
+            return !NotSupportedCharacters.Any();
+        }
+
         private bool CheckUsingReflection(char character)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
