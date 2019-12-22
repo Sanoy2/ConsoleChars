@@ -10,17 +10,11 @@ namespace ConsoleCharsCheck
         static void Main(string[] args)
         {
             var checker = new SupportedCharactersChecker();
-            var factory = new CharacterFactory(checker);
 
-            var C = factory.Create('C');
-            var H = factory.Create('H');
-
-            ISentence text = new Sentence("CH");
+            ISentence text = new Sentence("CCCC");
 
             Console.WriteLine(text.MediumString);
 
-            //Console.WriteLine(C.ToString());
-            //Console.WriteLine(H.ToString());
         }
     }
 }

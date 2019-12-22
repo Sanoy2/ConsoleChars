@@ -11,18 +11,24 @@ namespace ConsoleChars.Implementation
     {
         private readonly ISupportedCharactersChecker supportedCharactersChecker;
         private readonly ICharacterFactory characterFactory;
-
         public string MediumString => ToMediumString();
 
         public string Value { get; }
+        public int SpaceBetweenWordsLength { get; }
 
-        public Sentence(string text)
+        public Sentence(string text, int spaceBetweenWordsLength = 2)
         {
             this.supportedCharactersChecker = new SupportedCharactersChecker();
             this.characterFactory = new CharacterFactory(this.supportedCharactersChecker);
 
             this.ValidateWithException(text);
 
+            if(spaceBetweenWordsLength < 1)
+            {
+                spaceBetweenWordsLength = 2;
+            }
+
+            this.SpaceBetweenWordsLength = spaceBetweenWordsLength;
             this.Value = text;
         }
 
@@ -61,8 +67,9 @@ namespace ConsoleChars.Implementation
                 foreach (var character in chars)
                 {
                     builder.Append(character.MediumStringLines.Skip(i).First());
+                    builder.Append(this.GetSpaceBetweenWords());
                 }
-
+                
                 builder.AppendLine();
             }
 
@@ -79,6 +86,11 @@ namespace ConsoleChars.Implementation
             }
 
             return chars;
+        }
+
+        private string GetSpaceBetweenWords()
+        {
+            return new string(' ', this.SpaceBetweenWordsLength);
         }
     }
 }
