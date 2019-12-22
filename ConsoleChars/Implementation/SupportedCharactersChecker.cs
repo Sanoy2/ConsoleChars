@@ -27,6 +27,11 @@ namespace ConsoleChars.Implementation
             return IsSupportedUsingReflection(hex);
         }
 
+        public bool AreAllSupported(string text)
+        {
+            return this.AreAllSupported(text, out IEnumerable<char> unusedParameter);
+        }
+
         public bool AreAllSupported(string text, out IEnumerable<char> NotSupportedCharacters)
         {
             IList<char> notSupportedChars = new List<char>();

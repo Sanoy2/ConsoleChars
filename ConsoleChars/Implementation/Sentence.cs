@@ -12,7 +12,6 @@ namespace ConsoleChars.Implementation
         private readonly ISupportedCharactersChecker supportedCharactersChecker;
         private readonly ICharacterFactory characterFactory;
         private readonly ICharToHexConverter charToHexConverter;
-        public string MediumString => ToMediumString();
 
         public string Value { get; }
         public int SpaceBetweenWordsLength { get; }
@@ -32,6 +31,16 @@ namespace ConsoleChars.Implementation
 
             this.SpaceBetweenWordsLength = spaceBetweenWordsLength;
             this.Value = text;
+        }
+
+        public bool IsSupported(string text)
+        {
+            return this.supportedCharactersChecker.AreAllSupported(text);
+        }
+
+        public bool IsSupported(string text, out IEnumerable<char> NotSupportedCharacters)
+        {
+            return this.supportedCharactersChecker.AreAllSupported(text, out NotSupportedCharacters);
         }
 
         private void ValidateWithException(string text)
@@ -56,7 +65,7 @@ namespace ConsoleChars.Implementation
 
         public override string ToString()
         {
-            return this.MediumString;
+            return this.ToMediumString();
         }
 
         private string ToMediumString()

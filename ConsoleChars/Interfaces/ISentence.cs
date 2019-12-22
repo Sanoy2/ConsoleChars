@@ -6,7 +6,9 @@ namespace ConsoleChars.Interfaces
 {
     public interface ISentence
     {
-        string MediumString { get; }
         string Value { get; }
+
+        bool IsSupported(string text);
+        bool IsSupported(string text, out IEnumerable<char> NotSupportedCharacters);
     }
 }

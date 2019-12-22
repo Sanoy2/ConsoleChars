@@ -7,6 +7,7 @@ namespace ConsoleChars.Interfaces
     public interface ISupportedCharactersChecker
     {
         bool IsSupported(char character);
+        bool AreAllSupported(string text);
         bool AreAllSupported(string text, out IEnumerable<char> NotSupportedCharacters);
     }
 }
