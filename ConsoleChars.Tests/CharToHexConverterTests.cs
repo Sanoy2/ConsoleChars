@@ -5,7 +5,7 @@ using FluentAssertions;
 
 namespace ConsoleChars.Tests
 {
-    public class Tests
+    public class CharToHexConverterTests
     {
         private ICharToHexConverter converter;
 
@@ -65,7 +65,6 @@ namespace ConsoleChars.Tests
         [TestCase(';', "3B")]
         [TestCase(' ', "20")]
         [TestCase('ą', "C485")] 
-        [TestCase('ߦ', "DFA6")]
         public void Convert_ResultHex_ShouldNotReturnWhiteSpace(char character, string expectedHex)
         {
             string hex = this.converter.ConvertToHex(character);

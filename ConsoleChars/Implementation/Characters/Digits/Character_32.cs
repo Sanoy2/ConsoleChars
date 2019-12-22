@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleChars.Implementation.Characters.Digits
 {
-    public class Character_2 : Character
+    public class Character_32 : Character
     {
         protected override IList<string> ToMediumString()
         {

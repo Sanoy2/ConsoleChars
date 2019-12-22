@@ -20,14 +20,12 @@ namespace ConsoleChars.Implementation
 
         public override string ToString()
         {
-            var builder = new StringBuilder();
+            var thisClassName = this.GetType().Name;
+            var classExtension = thisClassName.Replace("Character_", string.Empty);
 
-            foreach (var line in this.MediumStringLines)
-            {
-                builder.AppendLine(line);
-            }
+            IHexToCharConverter converter = new HexToCharConverter();
 
-            return builder.ToString();
+            return converter.ConvertToChar(classExtension).ToString();
         }
     }
 }
