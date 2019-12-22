@@ -11,10 +11,10 @@ namespace ConsoleChars.Implementation.Characters.Letters
         {
             List<string> lines = new List<string>();
 
-            lines.Add("  #  ");
-            lines.Add(" # # ");
+            lines.Add(" ### ");
             lines.Add("#   #");
             lines.Add("#####");
+            lines.Add("#   #");
             lines.Add("#   #");
             lines.Add("     ");
 
