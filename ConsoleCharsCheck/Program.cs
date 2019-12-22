@@ -11,7 +11,7 @@ namespace ConsoleCharsCheck
         {
             var checker = new SupportedCharactersChecker();
 
-            ISentence text = new Sentence("CCCC");
+            ISentence text = new Sentence("CHYBA");
 
             Console.WriteLine(text.MediumString);
 

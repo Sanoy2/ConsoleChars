@@ -16,6 +16,7 @@ namespace ConsoleChars.Implementation.Characters.Letters
             lines.Add("#####");
             lines.Add("#   #");
             lines.Add("#   #");
+            lines.Add("     ");
 
             return lines;
         }

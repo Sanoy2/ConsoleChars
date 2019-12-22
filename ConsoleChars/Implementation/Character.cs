@@ -9,7 +9,7 @@ namespace ConsoleChars.Implementation
 {
     public abstract class Character
     {
-        public static int MediumHeight { get; } = 5;
+        public static int MediumHeight { get; } = 6;
 
         public virtual IEnumerable<string> MediumStringLines => this.ToMediumString();
 

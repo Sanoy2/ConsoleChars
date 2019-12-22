@@ -5,17 +5,17 @@ using System.Text;
 
 namespace ConsoleChars.Implementation.Characters.Letters
 {
-    public class Character_C : Character
+    public class Character_A : Character
     {
         protected override IList<string> ToMediumString()
         {
             List<string> lines = new List<string>();
 
+            lines.Add("  #  ");
+            lines.Add(" # # ");
+            lines.Add("#   #");
             lines.Add("#####");
-            lines.Add("#    ");
-            lines.Add("#    ");
-            lines.Add("#    ");
-            lines.Add("#####");
+            lines.Add("#   #");
             lines.Add("     ");
 
             return lines;

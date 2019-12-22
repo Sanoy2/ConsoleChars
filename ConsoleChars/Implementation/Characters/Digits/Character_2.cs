@@ -14,8 +14,9 @@ namespace ConsoleChars.Implementation.Characters.Digits
             lines.Add("#####");
             lines.Add("    #");
             lines.Add("#####");
-            lines.Add("#   ");
+            lines.Add("#    ");
             lines.Add("#####");
+            lines.Add("     ");
 
             return lines;
         }
