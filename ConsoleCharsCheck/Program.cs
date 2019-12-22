@@ -8,7 +8,7 @@ namespace ConsoleCharsCheck
     {
         static void Main(string[] args)
         {
-            string text = "HELLO, WORLDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD!";
+            string text = "HELLO, WORLD!";
             Console.WriteLine(text.ToSentence());
 
             var sentence = new Sentence(text);
