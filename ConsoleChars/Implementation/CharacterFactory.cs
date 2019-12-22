@@ -13,45 +13,35 @@ namespace ConsoleChars.Implementation
     public class CharacterFactory : ICharacterFactory
     {
         private readonly ISupportedCharactersChecker supportedCharactersChecker;
-        private readonly string baseNamespaceName;
+        private readonly ICharToHexConverter converter;
 
-        public CharacterFactory(ISupportedCharactersChecker supportedCharactersChecker)
+        public CharacterFactory(ISupportedCharactersChecker supportedCharactersChecker, ICharToHexConverter converter)
         {
             this.supportedCharactersChecker = supportedCharactersChecker;
-            this.baseNamespaceName = "ConsoleChars.Implementation.Characters.";
+            this.converter = converter;
         }
 
         public Character Create(char character)
         {
             this.ValidateWithException(character);
-            Type type = this.TakeProperType(character);
+            string hex = this.converter.ConvertToHex(character);
+
+            Type type = this.TakeCharacterUsingReflection(hex);
             return this.CreateInstance(type);
         }
 
-        private Type TakeProperType(char character)
+        private Type TakeCharacterUsingReflection(string hex)
         {
-            return this.TakeProperLetterType(character) ?? this.TakeProperDigitType(character);
-        }
+            Assembly assembly = Assembly.GetExecutingAssembly();
 
-        private Type TakeProperLetterType(char character)
-        {
-            string namespaceName = this.baseNamespaceName + "Letters.";
-            return this.TakeCharacterUsingReflection(character, namespaceName);
-        }
+            string fullName = assembly.GetTypes()
+                .Where(n => n.IsClass)
+                .Where(n => !n.IsAbstract)
+                .Where(n => n.IsSubclassOf(typeof(Character)))
+                .Single(n => n.Name.Split('_').Skip(1).First() == hex)
+                .FullName;
 
-        private Type TakeProperDigitType(char character)
-        {
-            string namespaceName = this.baseNamespaceName + "Digits.";
-            return this.TakeCharacterUsingReflection(character, namespaceName);
-        }
-
-        private Type TakeCharacterUsingReflection(char character, string namespaceName)
-        {
-            string className = "Character_" + character;
-
-            string expectedType = namespaceName + className;
-
-            Type type = Type.GetType(expectedType);
+            Type type = Type.GetType(fullName);
             return type;
         }
 

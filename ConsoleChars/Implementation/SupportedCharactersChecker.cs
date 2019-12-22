@@ -9,9 +9,22 @@ namespace ConsoleChars.Implementation
 {
     public class SupportedCharactersChecker : ISupportedCharactersChecker
     {
+        private readonly ICharToHexConverter converter;
+
+        public SupportedCharactersChecker(ICharToHexConverter converter)
+        {
+            this.converter = converter;
+        }
+
+        public SupportedCharactersChecker()
+        {
+            this.converter = new CharToHexConverter();
+        }
+
         public bool IsSupported(char character)
         {
-            return IsSupportedUsingReflection(character);
+            string hex = this.converter.ConvertToHex(character);
+            return IsSupportedUsingReflection(hex);
         }
 
         public bool AreAllSupported(string text, out IEnumerable<char> NotSupportedCharacters)
@@ -29,7 +42,7 @@ namespace ConsoleChars.Implementation
             return !NotSupportedCharacters.Any();
         }
 
-        private bool IsSupportedUsingReflection(char character)
+        private bool IsSupportedUsingReflection(string hex)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
 
@@ -40,9 +53,7 @@ namespace ConsoleChars.Implementation
 
             IEnumerable<string> names = classes.Select(n => n.Name.Replace("Character_", string.Empty));
 
-            IEnumerable<char> characters = names.Select(n => char.Parse(n));
-
-            return characters.Contains(character);
+            return names.Contains(hex);
         }
     }
 }

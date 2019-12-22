@@ -11,6 +11,7 @@ namespace ConsoleChars.Implementation
     {
         private readonly ISupportedCharactersChecker supportedCharactersChecker;
         private readonly ICharacterFactory characterFactory;
+        private readonly ICharToHexConverter charToHexConverter;
         public string MediumString => ToMediumString();
 
         public string Value { get; }
@@ -19,7 +20,8 @@ namespace ConsoleChars.Implementation
         public Sentence(string text, int spaceBetweenWordsLength = 2)
         {
             this.supportedCharactersChecker = new SupportedCharactersChecker();
-            this.characterFactory = new CharacterFactory(this.supportedCharactersChecker);
+            this.charToHexConverter = new CharToHexConverter();
+            this.characterFactory = new CharacterFactory(this.supportedCharactersChecker, this.charToHexConverter);
 
             this.ValidateWithException(text);
 

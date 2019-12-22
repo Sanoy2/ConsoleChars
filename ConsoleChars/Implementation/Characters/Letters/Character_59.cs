@@ -5,14 +5,15 @@ using System.Text;
 
 namespace ConsoleChars.Implementation.Characters.Letters
 {
-    public class Character_T : Character
+    public class Character_59 : Character
     {
+        // Y
         protected override IList<string> ToMediumString()
         {
             List<string> lines = new List<string>();
 
-            lines.Add("#####");
-            lines.Add("  #  ");
+            lines.Add("#   #");
+            lines.Add(" # # ");
             lines.Add("  #  ");
             lines.Add("  #  ");
             lines.Add("  #  ");

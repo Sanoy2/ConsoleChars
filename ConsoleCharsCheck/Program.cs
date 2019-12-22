@@ -13,7 +13,7 @@ namespace ConsoleCharsCheck
         {
             var checker = new SupportedCharactersChecker();
 
-            ISentence text = new Sentence("CHYBA");
+            ISentence text = new Sentence("CHYBA - CHYBA");
 
             Console.WriteLine(text.MediumString);
 

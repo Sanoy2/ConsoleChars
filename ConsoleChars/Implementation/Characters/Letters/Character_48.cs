@@ -5,8 +5,9 @@ using System.Text;
 
 namespace ConsoleChars.Implementation.Characters.Letters
 {
-    public class Character_H : Character
+    public class Character_48 : Character
     {
+        // H
         protected override IList<string> ToMediumString()
         {
             List<string> lines = new List<string>();
