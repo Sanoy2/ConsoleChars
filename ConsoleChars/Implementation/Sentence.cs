@@ -3,6 +3,7 @@ using ConsoleChars.Others;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ConsoleChars.Implementation
 {
@@ -50,8 +51,32 @@ namespace ConsoleChars.Implementation
 
         private string ToMediumString()
         {
-            return string.Empty;
+            var chars = this.CreateCharactersCollection();
+            var builder = new StringBuilder();
+
+            for (int i = 0; i < Character.MediumHeight; i++)
+            {
+                foreach (var character in chars)
+                {
+                    builder.Append(character.MediumStringLines.Skip(i).First());
+                }
+
+                builder.AppendLine();
+            }
+
+            return builder.ToString();
         }
 
+        private IList<Character> CreateCharactersCollection()
+        {
+            List<Character> chars = new List<Character>();
+
+            foreach (var character in this.Value)
+            {
+                chars.Add(this.characterFactory.Create(character));
+            }
+
+            return chars;
+        }
     }
 }

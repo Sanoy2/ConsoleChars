@@ -21,12 +21,12 @@ namespace ConsoleChars.Implementation
         {
             this.ValidateWithException(character);
 
-            return this.TakeProperCharacter(character);
+            return this.TakeProperCharacterWithReflection(character);
         }
 
-        private Character TakeProperCharacter(char character)
+        private Character TakeProperCharacterWithReflection(char character)
         {
-            string namespaceName = "ConsoleChars.Implementation.Characters.";
+            string namespaceName = "ConsoleChars.Implementation.Characters.Letters.";
             string className = "Character_" + character;
 
             string expectedType = namespaceName + className;
