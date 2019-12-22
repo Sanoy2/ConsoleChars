@@ -56,7 +56,7 @@ namespace ConsoleChars.Implementation
 
         public override string ToString()
         {
-            return this.Value;
+            return this.MediumString;
         }
 
         private string ToMediumString()

@@ -34,14 +34,12 @@ namespace ConsoleChars.Implementation
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
 
-            string fullName = assembly.GetTypes()
+            Type type = assembly.GetTypes()
                 .Where(n => n.IsClass)
                 .Where(n => !n.IsAbstract)
                 .Where(n => n.IsSubclassOf(typeof(Character)))
-                .Single(n => n.Name.Split('_').Skip(1).First() == hex)
-                .FullName;
+                .Single(n => n.Name.Split('_').Skip(1).First() == hex);
 
-            Type type = Type.GetType(fullName);
             return type;
         }
 

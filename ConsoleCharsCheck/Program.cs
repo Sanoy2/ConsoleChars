@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using ConsoleChars;
 using ConsoleChars.Implementation;
+using ConsoleChars.Implementation.Characters.Digits;
+using ConsoleChars.Implementation.Characters.Letters;
 using ConsoleChars.Interfaces;
 
 namespace ConsoleCharsCheck
@@ -11,18 +15,8 @@ namespace ConsoleCharsCheck
     {
         static void Main(string[] args)
         {
-            var checker = new SupportedCharactersChecker();
-
-            ISentence text = new Sentence("CHYBA - CHYBA");
-
-            Console.WriteLine(text.MediumString);
-
-            char a = 'ƒ';
-
-            Encoding utf8 = Encoding.UTF8;
-            var bytes = utf8.GetBytes(a.ToString());
-            string hex = utf8.GetString(bytes);
-            Console.WriteLine($"hex: {hex}");
+            var sentence = new Sentence("DUPA");
+            Console.WriteLine(sentence);
         }
     }
 }
