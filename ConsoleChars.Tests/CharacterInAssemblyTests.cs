@@ -24,7 +24,22 @@ namespace ConsoleChars.Tests
         [TestCaseSource(nameof(GetAllCharactersInAssembly))]
         public void MediumStringLines_ShouldAlwaysReturn6Lines(Character character)
         {
-            true.Should().BeTrue();
+            int expectedMediumHeight = Character.MediumHeight;
+            IEnumerable<string> lines = character.MediumStringLines;
+
+            lines.Count().Should().Be(expectedMediumHeight);
+        }
+
+        [TestCaseSource(nameof(GetAllCharactersInAssembly))]
+        public void MediumStringLines_EachLineShouldBeTheSameLength(Character character)
+        {
+            IEnumerable<string> lines = character.MediumStringLines;
+
+            int firstLineLength = lines.First().Length;
+
+            bool isEveryLineTheSameLength = lines.All(n => n.Length == firstLineLength);
+
+            isEveryLineTheSameLength.Should().BeTrue();            
         }
 
         private static IEnumerable<Character> GetAllCharactersInAssembly()
