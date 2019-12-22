@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using ConsoleChars.Exceptions;
+using ConsoleChars.Implementation.Characters.Special;
 
 namespace ConsoleChars.Implementation
 {
@@ -93,7 +95,14 @@ namespace ConsoleChars.Implementation
 
             foreach (var character in this.Value)
             {
-                chars.Add(this.characterFactory.Create(character));
+                try
+                {
+                    chars.Add(this.characterFactory.Create(character));
+                }
+                catch(CharacterNotSupportedException)
+                {
+                    chars.Add(new Character_3F());
+                }
             }
 
             return chars;
